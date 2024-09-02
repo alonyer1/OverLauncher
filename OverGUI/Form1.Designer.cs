@@ -55,6 +55,17 @@
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
             SuspendLayout();
             // 
+            // label2
+            // 
+            label2.Font = new Font("Microsoft Sans Serif", 20F);
+            label2.ForeColor = SystemColors.ButtonHighlight;
+            label2.Location = new Point(90, 729);
+            label2.Name = "label2";
+            label2.Size = new Size(446, 32);
+            label2.TabIndex = 3;
+            label2.Text = "Optional Command Line Arguments";
+            label2.Click += label1_Click;
+            // 
             // button1
             // 
             button1.BackColor = Color.FromArgb(65, 199, 199, 199);
@@ -139,17 +150,6 @@
             OptionalArguments.Size = new Size(900, 39);
             OptionalArguments.TabIndex = 2;
             OptionalArguments.TextChanged += textBox1_TextChanged;
-            // 
-            // label2
-            // 
-            label2.Font = new Font("Microsoft Sans Serif", 20F);
-            label2.ForeColor = SystemColors.ButtonHighlight;
-            label2.Location = new Point(90, 729);
-            label2.Name = "label2";
-            label2.Size = new Size(446, 32);
-            label2.TabIndex = 3;
-            label2.Text = "Optional Command Line Arguments";
-            label2.Click += label1_Click;
             // 
             // Form1
             // 
