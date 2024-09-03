@@ -1,4 +1,6 @@
-﻿namespace OverGUI
+﻿using System.Windows.Forms;
+
+namespace OverGUI
 {
     partial class Form1
     {
@@ -23,13 +25,13 @@
         #region Alon Region
         private void FixFonts()
         {
-            //label1.Font = new Font("Myriad Pro", 20F);
-            //button1.Font = new Font("Myriad Pro", 25F);
-            //button3.Font = new Font("Myriad Pro", 25F);
+            /*
             SuspendLayout();
+            button1.Font = new Font("Microsoft Sans Serif", 40F);
             textBox1.Font = new Font("Microsoft Sans Serif", 20F);
             ResumeLayout(false);
             PerformLayout();
+            */
         }
         #endregion
 
@@ -43,14 +45,15 @@
         {
             Label label2;
             button1 = new Button();
-            button3 = new Button();
             pictureBox1 = new PictureBox();
+            button3 = new Button();
             fileSystemWatcher1 = new FileSystemWatcher();
             textBox1 = new TextBox();
             label1 = new Label();
             openFileDialog1 = new OpenFileDialog();
             OptionalArguments = new TextBox();
             label2 = new Label();
+            button1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
             SuspendLayout();
@@ -68,24 +71,43 @@
             // 
             // button1
             // 
-            button1.BackColor = Color.FromArgb(65, 199, 199, 199);
-            button1.BackgroundImage = Properties.Resources.button1;
+            button1.BackColor = Color.Transparent;
             button1.BackgroundImageLayout = ImageLayout.Zoom;
+            button1.Controls.Add(pictureBox1);
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Microsoft Sans Serif", 25F);
-            button1.Location = new Point(623, 334);
+            button1.Image = Properties.Resources.buttonRegular;
+            button1.ImageAlign = ContentAlignment.MiddleRight;
+            button1.Location = new Point(602, 334);
             button1.Name = "button1";
             button1.Size = new Size(445, 163);
             button1.TabIndex = 0;
-            button1.Text = "Redirect Domains";
+            button1.Text = "       Redirect Domains";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Image = Properties.Resources.gallery_001455;
+            pictureBox1.Location = new Point(220, 100);
+            pictureBox1.Margin = new Padding(0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(34, 37);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
+            // 
             // button3
             // 
-            button3.BackColor = Color.FromArgb(65, 199, 199, 199);
-            button3.BackgroundImage = Properties.Resources.button2;
+            button3.BackColor = Color.Transparent;
             button3.BackgroundImageLayout = ImageLayout.Zoom;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Microsoft Sans Serif", 25F);
+            button3.Image = Properties.Resources.buttonRegular;
             button3.Location = new Point(623, 574);
             button3.Name = "button3";
             button3.Size = new Size(445, 163);
@@ -93,19 +115,6 @@
             button3.Text = "Patch&&Launch";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button1_Click;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = SystemColors.ControlDark;
-            pictureBox1.BackgroundImage = Properties.Resources.gallery_001455;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(1010, 400);
-            pictureBox1.Margin = new Padding(0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(34, 37);
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             // 
             // fileSystemWatcher1
             // 
@@ -162,7 +171,6 @@
             Controls.Add(label1);
             Controls.Add(OptionalArguments);
             Controls.Add(textBox1);
-            Controls.Add(pictureBox1);
             Controls.Add(button3);
             Controls.Add(button1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -170,6 +178,7 @@
             Name = "Form1";
             Text = "OverPatcher";
             Load += Form1_Load;
+            button1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).EndInit();
             ResumeLayout(false);
