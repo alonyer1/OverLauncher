@@ -16,36 +16,42 @@ namespace OverGUI
         public Form1()
         {
             InitializeComponent();
+            MaximizeBox = false;
             FixFonts();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("This application requires admin privileges to modify system files. Please confirm to proceed.", "Admin Rights Needed", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             ProcessStartInfo processInfo = new ProcessStartInfo();
-            processInfo.FileName = @"AppendHosts.exe";
-            processInfo.UseShellExecute = false;
-            processInfo.RedirectStandardOutput = true;
-            processInfo.RedirectStandardError = true;
-            processInfo.CreateNoWindow = true;
-            textBox1.Text += "This operation requires administrator privilage.\n";
-            try
+            if (result == DialogResult.OK)
             {
-                using (Process process = Process.Start(processInfo))
+                processInfo.Verb = "runas";
+                processInfo.FileName = @"AppendHosts.exe";
+                processInfo.UseShellExecute = true;
+                processInfo.RedirectStandardOutput = false;
+                processInfo.RedirectStandardError = false;
+                processInfo.CreateNoWindow = true;
+                textBox1.Text += "This operation requires administrator privilage.\n";
+                try
                 {
-                    // Capture the output
-                    string output = process.StandardOutput.ReadToEnd();
-                    string error = process.StandardError.ReadToEnd();
+                    using (Process process = Process.Start(processInfo))
+                    {
+                        // Capture the output
+                        //string output = process.StandardOutput.ReadToEnd();
+                        //string error = process.StandardError.ReadToEnd();
 
-                    // Display the output in a TextBox or other control
-                    textBox1.Text += output + "\n" + error;
+                        // Display the output in a TextBox or other control
+                        //textBox1.Text += output + "\n" + error;
 
-                    process.WaitForExit();
-                    textBox1.Text += "Done!\n";
+                        process.WaitForExit();
+                        textBox1.Text += "\nDone!\n";
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("The operation was canceled or failed: " + ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show("The operation was canceled or failed: " + ex.Message);
+                }
             }
 
         }
@@ -57,32 +63,44 @@ namespace OverGUI
             overwatch.Filter = @"Overwatch beta executable|GameClientApp.exe|Overwatch executable|Overwatch.exe";
             overwatch.Title = "Browse for Overwatch client";
             overwatch.ShowDialog();
-            string arguments = "'"+overwatch.FileName+ "' " + OptionalArguments.Text;
-            
-            MessageBox.Show(arguments);
-            ProcessStartInfo processInfo = new ProcessStartInfo("OverLauncher.exe", arguments);
-            processInfo.UseShellExecute = false;
-            processInfo.RedirectStandardOutput = true;
-            processInfo.RedirectStandardError = true;
-            processInfo.CreateNoWindow = true;
-            try
+            if (overwatch.FileName != string.Empty)
             {
-                using (Process process = Process.Start(processInfo))
+                string arguments = "\"" + overwatch.FileName + "\" " + OptionalArguments.Text;
+                ProcessStartInfo processInfo = new ProcessStartInfo("OverLauncher.exe", arguments);
+                processInfo.UseShellExecute = false;
+                processInfo.RedirectStandardOutput = true;
+                processInfo.RedirectStandardError = true;
+                processInfo.CreateNoWindow = true;
+                try
                 {
-                    // Capture the output
-                    string output = process.StandardOutput.ReadToEnd();
-                    string error = process.StandardError.ReadToEnd();
+                    using (Process process = Process.Start(processInfo))
+                    {
+                        // Capture the output
+                        string output = process.StandardOutput.ReadToEnd();
+                        string error = process.StandardError.ReadToEnd();
 
-                    // Display the output in a TextBox or other control
-                    textBox1.Text += output + "\n" + error;
+                        // Display the output in a TextBox or other control
+                        textBox1.Text += output + "\n" + error;
 
-                    process.WaitForExit();
+                        //process.WaitForExit();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("The operation was canceled or failed: " + ex.Message);
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("The operation was canceled or failed: " + ex.Message);
-            }
+        }
+        private void changeToWhite(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            button.Image = Properties.Resources.buttonHover;
+            //button.BackColor = Color.Transparent;
+        }
+        private void changeToYellow(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            button.Image = Properties.Resources.buttonRegular;
         }
 
         private void Form1_Load(object sender, EventArgs e)

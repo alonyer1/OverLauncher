@@ -25,12 +25,15 @@ int main() {
 
     // Append to the file if lines don't exist
     std::ofstream outfile(path, std::ios_base::app);
-
-    if (std::find(content.begin(), content.end(), first_line) == content.end()) {
-        outfile << "\n" << first_line;
+    if (content.back().empty() || content.back().back() != '\n') {
+        outfile << "\n";
     }
-    if (std::find(content.begin(), content.end(), second_line) == content.end()) {
+
+    if (std::find(content.begin(), content.end(), "#plasmawatch\n") == content.end()) {
+        outfile << "#plasmawatch\n";
+        outfile << first_line;
         outfile << second_line;
+        outfile << "#end of section\n";
     }
 
     outfile.close();

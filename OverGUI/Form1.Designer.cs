@@ -44,6 +44,7 @@ namespace OverGUI
         private void InitializeComponent()
         {
             Label label2;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             button1 = new Button();
             pictureBox1 = new PictureBox();
             button3 = new Button();
@@ -67,7 +68,6 @@ namespace OverGUI
             label2.Size = new Size(446, 32);
             label2.TabIndex = 3;
             label2.Text = "Optional Command Line Arguments";
-            //label2.Click += label1_Click;
             // 
             // button1
             // 
@@ -75,6 +75,8 @@ namespace OverGUI
             button1.BackgroundImageLayout = ImageLayout.Zoom;
             button1.Controls.Add(pictureBox1);
             button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button1.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Microsoft Sans Serif", 25F);
             button1.Image = Properties.Resources.buttonRegular;
@@ -86,6 +88,8 @@ namespace OverGUI
             button1.Text = "       Redirect Domains";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
+            button1.MouseEnter += changeToWhite;
+            button1.MouseLeave += changeToYellow;
             // 
             // pictureBox1
             // 
@@ -105,6 +109,8 @@ namespace OverGUI
             button3.BackColor = Color.Transparent;
             button3.BackgroundImageLayout = ImageLayout.Zoom;
             button3.FlatAppearance.BorderSize = 0;
+            button3.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button3.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Microsoft Sans Serif", 25F);
             button3.Image = Properties.Resources.buttonRegular;
@@ -115,6 +121,8 @@ namespace OverGUI
             button3.Text = "Patch&&Launch";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
+            button3.MouseEnter += changeToWhite;
+            button3.MouseLeave += changeToYellow;
             // 
             // fileSystemWatcher1
             // 
@@ -174,6 +182,7 @@ namespace OverGUI
             Controls.Add(button3);
             Controls.Add(button1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 13, 3, 13);
             Name = "Form1";
             Text = "OverPatcher";
