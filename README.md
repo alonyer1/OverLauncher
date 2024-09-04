@@ -22,7 +22,7 @@ In order for this to work, you need to point the domain `bnet-emu.fish` to `127.
 
 ## Usage
 
-###Through GUI
+### Through GUI
 Launch OverGUI.exe, and click on "Patch&Launch". It will open a dialogue to select the game client. Select your local GameClientApp.exe and click "open".
 
 ### Through Command Line
