@@ -50,8 +50,8 @@ namespace OverGUI
             fileSystemWatcher1 = new FileSystemWatcher();
             textBox1 = new TextBox();
             label1 = new Label();
-            openFileDialog1 = new OpenFileDialog();
             OptionalArguments = new TextBox();
+            openFileDialog2 = new OpenFileDialog();
             label2 = new Label();
             button1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -67,7 +67,7 @@ namespace OverGUI
             label2.Size = new Size(446, 32);
             label2.TabIndex = 3;
             label2.Text = "Optional Command Line Arguments";
-            label2.Click += label1_Click;
+            //label2.Click += label1_Click;
             // 
             // button1
             // 
@@ -114,7 +114,7 @@ namespace OverGUI
             button3.TabIndex = 0;
             button3.Text = "Patch&&Launch";
             button3.UseVisualStyleBackColor = false;
-            button3.Click += button1_Click;
+            button3.Click += button3_Click;
             // 
             // fileSystemWatcher1
             // 
@@ -145,10 +145,6 @@ namespace OverGUI
             label1.Text = "Logs";
             label1.Click += label1_Click;
             // 
-            // openFileDialog1
-            // 
-            openFileDialog1.FileName = "openFileDialog1";
-            // 
             // OptionalArguments
             // 
             OptionalArguments.Anchor = AnchorStyles.Bottom;
@@ -159,6 +155,10 @@ namespace OverGUI
             OptionalArguments.Size = new Size(900, 39);
             OptionalArguments.TabIndex = 2;
             OptionalArguments.TextChanged += textBox1_TextChanged;
+            // 
+            // openFileDialog2
+            // 
+            openFileDialog2.FileName = "openFileDialog2";
             // 
             // Form1
             // 
@@ -194,7 +194,7 @@ namespace OverGUI
         private FileSystemWatcher fileSystemWatcher1;
         private TextBox textBox1;
         private Label label1;
-        private OpenFileDialog openFileDialog1;
         private TextBox OptionalArguments;
+        private OpenFileDialog openFileDialog2;
     }
 }

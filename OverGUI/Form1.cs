@@ -27,6 +27,7 @@ namespace OverGUI
             processInfo.RedirectStandardOutput = true;
             processInfo.RedirectStandardError = true;
             processInfo.CreateNoWindow = true;
+            textBox1.Text += "This operation requires administrator privilage.\n";
             try
             {
                 using (Process process = Process.Start(processInfo))
@@ -39,6 +40,7 @@ namespace OverGUI
                     textBox1.Text += output + "\n" + error;
 
                     process.WaitForExit();
+                    textBox1.Text += "Done!\n";
                 }
             }
             catch (Exception ex)
@@ -47,9 +49,18 @@ namespace OverGUI
             }
 
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-            ProcessStartInfo processInfo = new ProcessStartInfo("OverLauncher.exe", OptionalArguments.Text);
+            OpenFileDialog overwatch = new OpenFileDialog();
+            overwatch.InitialDirectory = @"C:\";
+            overwatch.DefaultExt = @".exe";
+            overwatch.Filter = @"Overwatch beta executable|GameClientApp.exe|Overwatch executable|Overwatch.exe";
+            overwatch.Title = "Browse for Overwatch client";
+            overwatch.ShowDialog();
+            string arguments = "'"+overwatch.FileName+ "' " + OptionalArguments.Text;
+            
+            MessageBox.Show(arguments);
+            ProcessStartInfo processInfo = new ProcessStartInfo("OverLauncher.exe", arguments);
             processInfo.UseShellExecute = false;
             processInfo.RedirectStandardOutput = true;
             processInfo.RedirectStandardError = true;
