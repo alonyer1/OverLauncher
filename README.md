@@ -6,6 +6,11 @@ Join the discord: https://discord.gg/T5RncE2RkN
 Written in C++.
 
 ## Setup (REQUIRED)
+
+### Through GUI
+Launch OverGUI.exe, and click on "Redirect Domains". Select "Ok".
+
+### Manually
 In order for this to work, you need to point the domain `bnet-emu.fish` to `127.0.0.1`.
 1. Open Notepad or any text editor with ADMINISTRATOR.
 2. Head to `C:\Windows\System32\drivers\etc\hosts` and open the file.
@@ -16,6 +21,11 @@ In order for this to work, you need to point the domain `bnet-emu.fish` to `127.
 (This won't mess with your computer in any way.)
 
 ## Usage
+
+###Through GUI
+Launch OverGUI.exe, and click on "Patch&Launch". It will open a dialogue to select the game client. Select your local GameClientApp.exe and click "open".
+
+### Through Command Line
 `OverLauncher "path in quotes"`
 (You need quotes or it will not load, blame how strings work in c++ than me please)
 
