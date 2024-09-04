@@ -1,3 +1,0 @@
-test
-127.0.0.1 bnet-emu.fish
-127.0.0.1 us.game.bwattle.uwu
